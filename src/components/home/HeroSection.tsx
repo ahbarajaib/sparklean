@@ -4,7 +4,7 @@ import { ArrowRight, Leaf, ShieldCheck, MapPin } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative bg-white pt-10 sm:pt-14 lg:pt-16 pb-16 lg:pb-24 overflow-hidden">
+    <section className="relative bg-white py-12 sm:py-16 lg:py-20 border-b border-[#E6E9EC] overflow-hidden">
       <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column (5 columns on desktop) */}
@@ -81,34 +81,6 @@ export const HeroSection: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Elegant Organic Wave Graphic Divider (Crimson & Green Wave Ribbon) */}
-      <div className="w-full overflow-hidden leading-none mt-12 sm:mt-16 pointer-events-none select-none">
-        <svg
-          viewBox="0 0 1440 90"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-12 sm:h-16 lg:h-20 preserve-3d"
-        >
-          {/* Green wave accent (echoing Sparklean logo leaf) */}
-          <path
-            d="M0 65C320 20 620 95 960 45C1180 15 1340 55 1440 70V90H0V65Z"
-            fill="#639B48"
-            fillOpacity="0.18"
-          />
-          {/* Crimson wave accent */}
-          <path
-            d="M0 50C280 85 640 10 980 55C1220 85 1360 40 1440 50V90H0V50Z"
-            fill="#A71930"
-            fillOpacity="0.12"
-          />
-          {/* Bottom fill connecting to warm-white section */}
-          <path
-            d="M0 72C360 40 720 85 1080 60C1260 48 1380 65 1440 72V90H0V72Z"
-            fill="#F7F8F6"
-          />
-        </svg>
       </div>
     </section>
   );
