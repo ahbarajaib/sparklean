@@ -21,9 +21,8 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets/|images/|favicon.png|robots.txt).*)$",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
 }
-

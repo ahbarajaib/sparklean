@@ -12,8 +12,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'SPK-BrewClean Espresso Machine Cleaner',
     category: 'kitchen-and-catering',
     categoryName: 'Kitchen and Catering',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-brewclean.webp',
+    images: ['/images/products/spk-brewclean.webp'],
     shortDescription:
       'Specially formulated cleaning powder for commercial coffee and espresso machines.',
     fullDescription:
@@ -43,8 +43,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'SPK-Oven Cleaner Plus',
     category: 'kitchen-and-catering',
     categoryName: 'Kitchen and Catering',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-oven-cleaner.webp',
+    images: ['/images/products/spk-oven-cleaner.webp'],
     shortDescription:
       'Heavy-duty alkaline degreaser for commercial ovens, grills, and fryers.',
     fullDescription:
@@ -70,8 +70,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'SPK-Oil & Grease Stain Remover',
     category: 'laundry-products',
     categoryName: 'Laundry Products',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-oil-out.webp',
+    images: ['/images/products/spk-oil-out.webp'],
     shortDescription:
       'Professional laundry stain remover for stubborn cooking oils, grease, and grime.',
     fullDescription:
@@ -99,8 +99,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'SPK-Coffee & Tea Stain Remover',
     category: 'laundry-products',
     categoryName: 'Laundry Products',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-coffee-out.webp',
+    images: ['/images/products/spk-coffee-out.webp'],
     shortDescription:
       'Advanced tannin stain remover formulated for commercial textiles and linens.',
     fullDescription:
@@ -128,8 +128,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'SPK-Rust Out Laundry Rust Stain Remover',
     category: 'laundry-products',
     categoryName: 'Laundry Products',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-rust-out.webp',
+    images: ['/images/products/spk-rust-out.webp'],
     shortDescription:
       'Professional strength rust stain remover safe for white and colored fabrics.',
     fullDescription:
@@ -156,8 +156,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'SPK-Laundry Detergent (Delicate & Color-Safe)',
     category: 'laundry-products',
     categoryName: 'Laundry Products',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-laundry-detergent.webp',
+    images: ['/images/products/spk-laundry-detergent.webp'],
     shortDescription:
       'Premium liquid detergent providing powerful soil removal with fiber protection.',
     fullDescription:
@@ -184,8 +184,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'Sparkle Suds Lavender Hand Soap',
     category: 'housekeeping',
     categoryName: 'Housekeeping',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-suds-lavender.webp',
+    images: ['/images/products/spk-suds-lavender.webp'],
     shortDescription:
       'Gentle liquid hand wash enriched with calming lavender fragrance.',
     fullDescription:
@@ -210,8 +210,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'Cleaning Tablets for Rational Ovens',
     category: 'rational-and-mkn',
     categoryName: 'Rational and MKN',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-rational-tabs.webp',
+    images: ['/images/products/spk-rational-tabs.webp'],
     shortDescription:
       'Specialized active cleaning tablets for commercial combi-steamer ovens.',
     fullDescription:
@@ -236,8 +236,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'Single Bucket Janitorial Trolley',
     category: 'janitorial-products',
     categoryName: 'Janitorial Products',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-janitorial-trolley.webp',
+    images: ['/images/products/spk-janitorial-trolley.webp'],
     shortDescription:
       'Heavy-duty facility mop trolley equipped with ergonomic downward-pressure wringer.',
     fullDescription:
@@ -262,8 +262,8 @@ export const COMMERCIAL_PRODUCTS: Product[] = [
     name: 'Vinyl Powder-Free Protective Gloves',
     category: 'disposables-and-packaging',
     categoryName: 'Disposables and Packaging',
-    image: '.webp',
-    images: ['.webp'],
+    image: '/images/products/spk-vinyl-gloves.webp',
+    images: ['/images/products/spk-vinyl-gloves.webp'],
     shortDescription:
       'Food-grade and hygiene examination disposable vinyl gloves.',
     fullDescription:
