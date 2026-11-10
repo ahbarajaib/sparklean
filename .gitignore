@@ -20,6 +20,7 @@ dist/
 dist-ssr/
 build/
 *.tsbuildinfo
+public/images_backup/
 
 # Vite cache
 .vite/

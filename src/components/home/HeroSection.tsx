@@ -70,10 +70,11 @@ export const HeroSection: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="relative rounded-2xl overflow-hidden shadow-elevated border border-[#E6E9EC] bg-[#F7F8F6]">
               <img
-                src="/images/hero/commercial-kitchen.png"
-                alt="Commercial hygiene and kitchen environment"
+                src="/images/hero/hero-bottles-kitchen.webp"
+                alt="Sparklean commercial cleaning formulations in professional kitchen"
                 className="w-full h-full object-cover object-center aspect-[1672/941]"
                 loading="eager"
+                fetchPriority="high"
                 decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />

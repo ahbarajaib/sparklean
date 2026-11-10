@@ -122,33 +122,47 @@ export const AboutPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right: Technical Support Card */}
-            <div className="lg:col-span-5 bg-white rounded-container border border-sparklean-border p-8 shadow-card space-y-6">
-              <div className="w-12 h-12 bg-sparklean-primary-light text-sparklean-primary rounded-subtle flex items-center justify-center">
-                <Award className="w-6 h-6" />
+            {/* Right: Facility Warehouse & Technical Support */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#E6E9EC] shadow-card bg-[#F7F8F6]">
+                <img
+                  src="/images/about/facility-warehouse.webp"
+                  alt="Sparklean UAE logistics and commercial chemical warehouse"
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold rounded-full border border-white/20">
+                  UAE Logistics &amp; Storage
+                </div>
               </div>
-              <h3 className="text-xl font-heading font-bold uppercase tracking-wide text-sparklean-charcoal">
-                On-Site Technical Expertise
-              </h3>
-              <p className="text-xs sm:text-sm text-sparklean-muted leading-relaxed">
-                Because we work in close partnership with our customers, we understand the specific sanitation
-                and soil-load hurdles our clients encounter daily. Our technical personnel support commercial
-                accounts with dilution ratios, application procedures, and sustainable cleaning practices.
-              </p>
-              <ul className="space-y-2 text-xs text-sparklean-charcoal font-medium border-t border-sparklean-border-light pt-4">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-sparklean-accent shrink-0" />
-                  <span>Stain diagnosis and chemical selection advice</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-sparklean-accent shrink-0" />
-                  <span>Cost-efficient dilution and dosage recommendations</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-sparklean-accent shrink-0" />
-                  <span>MSDS technical documentation and safety protocols</span>
-                </li>
-              </ul>
+
+              <div className="bg-white rounded-2xl border border-[#E6E9EC] p-6 shadow-subtle space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-[#FDF2F4] text-[#A71930] rounded-xl flex items-center justify-center shrink-0">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-heading font-bold text-[#172B40]">
+                      On-Site Technical Expertise
+                    </h3>
+                    <p className="text-xs text-[#66717C]">Direct facility advisory &amp; dosage guidelines</p>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-[#172B40] font-medium border-t border-[#F0F2F4] pt-3">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#639B48] shrink-0" />
+                    <span>Stain diagnosis and chemical selection advice</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#639B48] shrink-0" />
+                    <span>Cost-efficient dilution and dosage recommendations</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#639B48] shrink-0" />
+                    <span>MSDS technical documentation and safety protocols</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

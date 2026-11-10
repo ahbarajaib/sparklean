@@ -75,23 +75,21 @@ export const ContactCtaSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Visual / Surface Shine Illustration (5 cols) */}
+          {/* Right Visual / Surface Shine Action Photo (5 cols) */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm shadow-2xl flex items-center justify-center p-8 text-center">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent pointer-events-none" />
-              <div className="space-y-4 relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-white/20 border border-white/30 mx-auto flex items-center justify-center text-white shadow-inner">
-                  <span className="text-2xl font-bold font-heading">UAE</span>
-                </div>
-                <div className="text-xl font-heading font-bold text-white">
-                  Fast Institutional Delivery
-                </div>
-                <p className="text-xs text-white/80 max-w-xs mx-auto leading-relaxed">
-                  Bulk order dispatch, custom dilutions, and technical hygiene consultation across all 7 Emirates.
-                </p>
-                <div className="inline-block px-3 py-1 rounded-full bg-white/15 text-[11px] font-semibold uppercase tracking-wider text-white">
-                  Direct B2B Supply
-                </div>
+            <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black/20">
+              <img
+                src="/images/cta/surface-cleaning.webp"
+                alt="Commercial hygiene surface cleaning in action"
+                className="w-full h-full object-cover object-center"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs">
+                <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[11px] font-semibold">
+                  UAE Commercial Hygiene
+                </span>
+                <span className="text-white/90 font-medium">Direct B2B Supply</span>
               </div>
             </div>
           </div>

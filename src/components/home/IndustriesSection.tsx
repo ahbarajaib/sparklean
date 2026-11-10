@@ -38,9 +38,17 @@ const INDUSTRIES: IndustryItem[] = [
 export const IndustriesSection: React.FC = () => {
   return (
     <section className="relative bg-[#13382C] text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
-      {/* Background Architectural Glass Texture & Subtle Lighting */}
-      <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
-      <div className="absolute -right-20 top-0 bottom-0 w-1/3 bg-gradient-to-l from-white/5 to-transparent pointer-events-none hidden lg:block" />
+      {/* Background Architectural Glass Facade */}
+      <div className="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 pointer-events-none opacity-25 lg:opacity-35 overflow-hidden">
+        <img
+          src="/images/industries/corporate-architecture.webp"
+          alt="Modern commercial corporate facility"
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#13382C] via-[#13382C]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#13382C] via-transparent to-[#13382C]/60" />
+      </div>
 
       <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
