@@ -56,3 +56,4 @@ export const MobileBottomBar: React.FC = () => {
     </aside>
   );
 };
+
