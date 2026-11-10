@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
+import { ArrowRight, Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 export const ContactCtaSection: React.FC = () => {
   return (
@@ -20,55 +20,64 @@ export const ContactCtaSection: React.FC = () => {
         </svg>
       </div>
 
-      <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Left Text Block (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            <span className="text-xs sm:text-[13px] font-heading font-extrabold uppercase tracking-[0.16em] text-[#D6A64F]">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+            <span className="text-[11px] sm:text-[13px] font-heading font-extrabold uppercase tracking-[0.16em] text-[#D6A64F]">
               GET A TAILORED SOLUTION
             </span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-heading font-extrabold text-white leading-[1.15]">
+            <h2 className="text-2xl sm:text-4xl lg:text-[2.75rem] font-heading font-extrabold text-white leading-tight">
               Looking for the Right Cleaning Solution for Your Business?
             </h2>
 
-            <p className="text-sm sm:text-base text-white/90 font-sans leading-relaxed max-w-xl">
+            <p className="text-xs sm:text-base text-white/90 font-sans leading-relaxed max-w-xl">
               Speak with our team about your cleaning requirements. We'll help you select the right products, dilution protocols and supply schedule.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-[#172B40] hover:bg-[#F7F8F6] font-sans font-semibold text-sm sm:text-base rounded-md transition-all shadow-card"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-[#172B40] hover:bg-[#F7F8F6] font-sans font-semibold text-sm rounded-xl transition-all shadow-card text-center"
               >
                 <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4 text-[#A71930]" />
               </Link>
               <Link
                 to="/contact?type=quote"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-transparent hover:bg-white/10 text-white border border-white/60 font-sans font-semibold text-sm sm:text-base rounded-md transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent hover:bg-white/10 text-white border border-white/60 font-sans font-semibold text-sm rounded-xl transition-all text-center"
               >
                 <span>Request a Quote</span>
               </Link>
+              <a
+                href="https://wa.me/971504363896"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#639B48] hover:bg-[#52823b] text-white font-sans font-semibold text-sm rounded-xl transition-all shadow-card text-center"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp Us</span>
+              </a>
             </div>
 
             {/* Quick Contact Line */}
-            <div className="pt-6 border-t border-white/20 flex flex-wrap items-center gap-6 text-xs text-white/85">
+            <div className="pt-4 sm:pt-6 border-t border-white/20 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-white/85">
               <a
                 href="tel:+971504363896"
-                className="inline-flex items-center gap-2 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-[#D6A64F]" />
                 <span className="font-medium">+971 50 436 3896</span>
               </a>
               <a
                 href="mailto:info@sparkleanglobal.com"
-                className="inline-flex items-center gap-2 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
               >
                 <Mail className="w-3.5 h-3.5 text-[#D6A64F]" />
                 <span>info@sparkleanglobal.com</span>
               </a>
-              <div className="inline-flex items-center gap-2">
+              <div className="inline-flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#D6A64F]" />
                 <span>Ajman, United Arab Emirates</span>
               </div>

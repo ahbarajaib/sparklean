@@ -14,6 +14,10 @@ export const Header: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const handleCloseMobileMenu = React.useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
   // Close menus on route change
   useEffect(() => {
     setIsDropdownOpen(false);
@@ -234,25 +238,25 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Mobile Navigation Controls */}
-          <div className="flex items-center gap-3 lg:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
               onClick={() => navigate('/products')}
-              className="p-2 text-sparklean-navy hover:text-sparklean-primary rounded-md"
+              className="w-10 h-10 flex items-center justify-center text-[#172B40] hover:text-[#A71930] rounded-xl hover:bg-[#F7F8F6]"
               aria-label="Search products"
             >
               <Search className="w-5 h-5" />
             </button>
             <Link
               to="/contact?type=quote"
-              className="inline-flex items-center justify-center px-3.5 py-1.5 bg-[#A71930] text-white font-sans font-semibold text-xs rounded-md hover:bg-[#8B1226] transition-colors"
+              className="inline-flex items-center justify-center px-3.5 py-2 bg-[#A71930] text-white font-sans font-semibold text-xs rounded-lg hover:bg-[#8B1226] transition-colors shadow-sm"
             >
               Quote
             </Link>
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="p-2 text-sparklean-navy hover:text-sparklean-primary rounded-md hover:bg-sparklean-warm-white focus:outline-none"
+              className="w-10 h-10 flex items-center justify-center text-[#172B40] hover:text-[#A71930] rounded-xl hover:bg-[#F7F8F6] focus:outline-none"
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" />
@@ -264,7 +268,7 @@ export const Header: React.FC = () => {
       {/* Mobile Drawer Navigation */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
+        onClose={handleCloseMobileMenu}
       />
     </header>
   );

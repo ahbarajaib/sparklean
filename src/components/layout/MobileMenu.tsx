@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronDown, ChevronRight, Phone, Mail, MapPin } from 'lucide-react';
+import {
+  X,
+  ChevronDown,
+  ChevronRight,
+  Phone,
+  Mail,
+  MapPin,
+  Search,
+  MessageCircle,
+  FileText,
+} from 'lucide-react';
 import { PRODUCT_CATEGORIES, MAIN_NAV_ITEMS } from '@/data/navigation';
 
 interface MobileMenuProps {
@@ -11,15 +22,21 @@ interface MobileMenuProps {
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const [isProductsExpanded, setIsProductsExpanded] = useState(true);
+  const [drawerSearch, setDrawerSearch] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
+  const prevPathRef = useRef(location.pathname);
 
-  // Close menu when route changes
-  React.useEffect(() => {
-    onClose();
+  // Close menu ONLY when route path actually changes
+  useEffect(() => {
+    if (prevPathRef.current !== location.pathname) {
+      onClose();
+      prevPathRef.current = location.pathname;
+    }
   }, [location.pathname, onClose]);
 
-  // Prevent body scroll when mobile menu is open
-  React.useEffect(() => {
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -30,10 +47,21 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
 
-  return (
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (drawerSearch.trim()) {
+      navigate(`/products?search=${encodeURIComponent(drawerSearch.trim())}`);
+      onClose();
+      setDrawerSearch('');
+    }
+  };
+
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <>
+        <div className="fixed inset-0 z-50 lg:hidden">
           {/* Backdrop Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -41,7 +69,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-[#172B40]/60 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 bg-[#172B40]/70 backdrop-blur-sm"
             aria-hidden="true"
           />
 
@@ -50,42 +78,59 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.25, ease: 'easeInOut' }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-sm bg-white shadow-elevated flex flex-col lg:hidden border-l border-[#E6E9EC]"
-            aria-label="Mobile Navigation"
+            transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+            className="fixed top-0 right-0 bottom-0 w-full max-w-[340px] sm:max-w-sm bg-white shadow-2xl flex flex-col border-l border-[#E6E9EC] z-10"
+            aria-label="Mobile Navigation Drawer"
           >
             {/* Drawer Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#E6E9EC] bg-[#F7F8F6]">
-              <Link to="/" onClick={onClose} className="flex items-center outline-none focus:outline-none">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#E6E9EC] bg-[#F7F8F6]">
+              <Link to="/" onClick={onClose} className="flex items-center outline-none">
                 <img
                   src="/images/logo/sparklean_logo.png"
                   alt="Sparklean Global"
-                  className="h-9 w-auto object-contain"
+                  className="h-8 w-auto object-contain"
                 />
               </Link>
               <button
                 type="button"
                 onClick={onClose}
-                className="p-2 -mr-2 text-[#172B40] hover:text-[#A71930] rounded-md hover:bg-white focus:outline-none"
+                className="w-10 h-10 flex items-center justify-center text-[#172B40] hover:text-[#A71930] rounded-full hover:bg-white transition-colors"
                 aria-label="Close menu"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
+            {/* In-Drawer Search Bar */}
+            <div className="p-4 border-b border-[#E6E9EC] bg-white">
+              <form onSubmit={handleSearchSubmit} className="relative">
+                <Search className="w-4 h-4 text-[#66717C] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <input
+                  type="text"
+                  value={drawerSearch}
+                  onChange={(e) => setDrawerSearch(e.target.value)}
+                  placeholder="Search catalogue..."
+                  className="w-full pl-9 pr-4 py-2.5 bg-[#F7F8F6] text-[#172B40] text-xs font-sans rounded-xl border border-[#E6E9EC] focus:outline-none focus:border-[#A71930] placeholder:text-[#66717C]"
+                />
+              </form>
+            </div>
+
             {/* Navigation Links Scrollable Area */}
-            <nav className="flex-1 overflow-y-auto px-6 py-6 space-y-2">
+            <nav className="flex-1 overflow-y-auto px-5 py-4 space-y-1 divide-y divide-[#F0F2F4]">
               {MAIN_NAV_ITEMS.map((item) => {
                 if (item.hasDropdown) {
                   return (
-                    <div key={item.name} className="py-1">
+                    <div key={item.name} className="py-2">
                       <button
                         type="button"
                         onClick={() => setIsProductsExpanded(!isProductsExpanded)}
-                        className="w-full flex items-center justify-between py-3 text-left font-sans text-base font-semibold text-[#172B40] hover:text-[#A71930] transition-colors"
+                        className="w-full flex items-center justify-between py-2 text-left font-sans text-[15px] font-bold text-[#172B40] hover:text-[#A71930] transition-colors"
                         aria-expanded={isProductsExpanded}
                       >
-                        <span>{item.name}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-[#A71930]" />
+                          <span>{item.name}</span>
+                        </div>
                         <ChevronDown
                           className={`w-4 h-4 text-[#66717C] transition-transform duration-200 ${
                             isProductsExpanded ? 'rotate-180 text-[#A71930]' : ''
@@ -93,7 +138,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                         />
                       </button>
 
-                      {/* Expandable Category List */}
+                      {/* Expandable Category Matrix */}
                       <AnimatePresence>
                         {isProductsExpanded && (
                           <motion.div
@@ -101,23 +146,32 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="overflow-hidden pl-3 space-y-1 border-l-2 border-[#A71930]/30 my-1"
+                            className="overflow-hidden pl-3 space-y-1 my-2 border-l-2 border-[#A71930]/30"
                           >
+                            <Link
+                              to="/products"
+                              onClick={onClose}
+                              className="flex items-center justify-between py-2 px-3 rounded-lg text-xs font-semibold text-[#A71930] bg-[#FDF2F4] mb-1"
+                            >
+                              <span>View Complete Catalogue</span>
+                              <ChevronRight className="w-3.5 h-3.5" />
+                            </Link>
+
                             {PRODUCT_CATEGORIES.map((category) => (
                               <NavLink
                                 key={category.id}
                                 to={category.href}
                                 onClick={onClose}
                                 className={({ isActive }) =>
-                                  `flex items-center justify-between py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                                  `flex items-center justify-between py-2 px-3 rounded-lg text-xs font-medium transition-colors ${
                                     isActive
-                                      ? 'bg-[#FDF2F4] text-[#A71930] font-semibold'
-                                      : 'text-[#172B40]/80 hover:text-[#A71930] hover:bg-[#F7F8F6]'
+                                      ? 'bg-[#FDF2F4] text-[#A71930] font-bold'
+                                      : 'text-[#172B40]/85 hover:text-[#A71930] hover:bg-[#F7F8F6]'
                                   }`
                                 }
                               >
                                 <span>{category.name}</span>
-                                <ChevronRight className="w-3.5 h-3.5 text-[#66717C]/60" />
+                                <ChevronRight className="w-3.5 h-3.5 text-[#66717C]/50" />
                               </NavLink>
                             ))}
                           </motion.div>
@@ -128,58 +182,75 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 }
 
                 return (
-                  <NavLink
-                    key={item.name}
-                    to={item.href}
-                    onClick={onClose}
-                    className={({ isActive }) =>
-                      `block py-3 font-sans text-base font-semibold border-b border-[#F0F2F4] transition-colors ${
-                        isActive
-                          ? 'text-[#A71930] font-bold'
-                          : 'text-[#172B40] hover:text-[#A71930]'
-                      }`
-                    }
-                  >
-                    {item.name}
-                  </NavLink>
+                  <div key={item.name} className="py-2">
+                    <NavLink
+                      to={item.href}
+                      onClick={onClose}
+                      className={({ isActive }) =>
+                        `block py-1.5 font-sans text-[15px] font-semibold transition-colors ${
+                          isActive
+                            ? 'text-[#A71930] font-bold'
+                            : 'text-[#172B40] hover:text-[#A71930]'
+                        }`
+                      }
+                    >
+                      {item.name}
+                    </NavLink>
+                  </div>
                 );
               })}
             </nav>
 
-            {/* Drawer Footer Actions */}
-            <div className="p-6 border-t border-[#E6E9EC] bg-[#F7F8F6] space-y-4">
+            {/* Quick Actions & UAE Direct Communication Footer */}
+            <div className="p-4 border-t border-[#E6E9EC] bg-[#F7F8F6] space-y-3">
+              {/* Primary Quote CTA */}
               <Link
                 to="/contact?type=quote"
                 onClick={onClose}
-                className="w-full inline-flex items-center justify-center px-5 py-3 text-center bg-[#A71930] text-white font-sans font-semibold text-sm rounded-md hover:bg-[#8B1226] transition-colors shadow-subtle"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#A71930] hover:bg-[#8B1226] text-white font-sans font-semibold text-xs uppercase tracking-wider rounded-xl transition-colors shadow-subtle text-center"
               >
-                Request a Quote
+                <FileText className="w-4 h-4" />
+                <span>Request a Quote</span>
               </Link>
 
-              <div className="space-y-2 text-xs text-[#66717C] pt-2 border-t border-[#E6E9EC]">
+              {/* Direct Communication Buttons (1-Tap Call & WhatsApp) */}
+              <div className="grid grid-cols-2 gap-2 pt-1">
                 <a
                   href="tel:+971504363896"
-                  className="flex items-center gap-2 text-[#172B40] hover:text-[#A71930] transition-colors py-1"
+                  className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 bg-white border border-[#E6E9EC] rounded-xl text-xs font-semibold text-[#172B40] hover:text-[#A71930] hover:border-[#A71930]/40 transition-colors shadow-sm"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#A71930]" />
-                  <span>+971 50 436 3896</span>
+                  <span>Call Us</span>
                 </a>
                 <a
-                  href="mailto:info@sparkleanglobal.com"
-                  className="flex items-center gap-2 text-[#172B40] hover:text-[#A71930] transition-colors py-1"
+                  href="https://wa.me/971504363896"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#639B48] text-white rounded-xl text-xs font-semibold hover:bg-[#52823b] transition-colors shadow-sm"
                 >
-                  <Mail className="w-3.5 h-3.5 text-[#A71930]" />
-                  <span>info@sparkleanglobal.com</span>
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>WhatsApp</span>
                 </a>
-                <div className="flex items-center gap-2 py-1 text-[#66717C]">
-                  <MapPin className="w-3.5 h-3.5 text-[#A71930] shrink-0" />
-                  <span>Al Jurf Industrial Area, Ajman, UAE</span>
+              </div>
+
+              {/* Verified Address & Hours */}
+              <div className="pt-2 text-[11px] text-[#66717C] space-y-1">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-3 h-3 text-[#A71930] shrink-0" />
+                  <span className="truncate">Al Jurf Industrial Area, Ajman, UAE</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-white/90">
+                  <Mail className="w-3 h-3 text-[#A71930] shrink-0" />
+                  <a href="mailto:info@sparkleanglobal.com" className="hover:text-[#A71930] text-[#66717C]">
+                    info@sparkleanglobal.com
+                  </a>
                 </div>
               </div>
             </div>
           </motion.aside>
-        </>
+        </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };

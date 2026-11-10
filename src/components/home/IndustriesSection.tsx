@@ -21,7 +21,7 @@ const INDUSTRIES: IndustryItem[] = [
   {
     icon: Cross,
     name: 'Healthcare & Clinics',
-    description: 'Sanitary environments, patient facilities & high-touch disinfection.',
+    description: 'Sanitary environments, patient facilities & disinfection.',
   },
   {
     icon: Building2,
@@ -37,7 +37,7 @@ const INDUSTRIES: IndustryItem[] = [
 
 export const IndustriesSection: React.FC = () => {
   return (
-    <section className="relative bg-[#13382C] text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <section className="relative bg-[#13382C] text-white py-12 sm:py-16 lg:py-24 overflow-hidden">
       {/* Background Architectural Glass Facade */}
       <div className="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 pointer-events-none opacity-25 lg:opacity-35 overflow-hidden">
         <img
@@ -52,43 +52,46 @@ export const IndustriesSection: React.FC = () => {
 
       <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="max-w-2xl mb-12 sm:mb-16 space-y-3">
-          <span className="text-xs sm:text-[13px] font-heading font-extrabold uppercase tracking-[0.16em] text-[#639B48]">
+        <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 space-y-2 sm:space-y-3">
+          <span className="text-[11px] sm:text-[13px] font-heading font-extrabold uppercase tracking-[0.16em] text-[#639B48]">
             TRUSTED BY BUSINESSES ACROSS THE UAE
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-heading font-extrabold text-white leading-[1.15]">
+          <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-heading font-extrabold text-white leading-tight">
             Serving a Wide Range of Industries.
           </h2>
-          <p className="text-sm sm:text-base text-white/80 font-sans leading-relaxed">
+          <p className="text-xs sm:text-base text-white/80 font-sans leading-relaxed">
             From high-volume commercial kitchens to five-star hospitality and healthcare facilities, our formulations are engineered to meet strict hygiene standards.
           </p>
         </div>
 
-        {/* 5 Industry Columns */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        {/* 5 Industry Columns (2 columns on mobile with 5th spanning full, 5 on desktop) */}
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
           {INDUSTRIES.map((industry, idx) => {
             const Icon = industry.icon;
+            const isLastOnMobile = idx === 4;
             return (
               <div
                 key={idx}
-                className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 rounded-2xl p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between"
+                className={`group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all duration-300 flex flex-col justify-between ${
+                  isLastOnMobile ? 'col-span-2 lg:col-span-1' : 'col-span-1'
+                }`}
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-[#639B48] group-hover:text-white group-hover:scale-110 transition-all mb-4">
-                    <Icon className="w-6 h-6" />
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-[#639B48] group-hover:text-white group-hover:scale-105 transition-all mb-3 sm:mb-4">
+                    <Icon className="w-4 h-4 sm:w-6 sm:h-6" />
                   </div>
 
-                  <h3 className="text-sm sm:text-base font-heading font-bold text-white mb-2 leading-snug">
+                  <h3 className="text-xs sm:text-base font-heading font-bold text-white mb-1.5 leading-snug">
                     {industry.name}
                   </h3>
 
-                  <p className="text-xs text-white/70 font-sans leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-white/70 font-sans leading-relaxed">
                     {industry.description}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-white/10">
-                  <span className="text-[11px] font-semibold text-[#639B48] uppercase tracking-wider group-hover:text-white transition-colors">
+                <div className="pt-3 mt-3 border-t border-white/10">
+                  <span className="text-[10px] sm:text-[11px] font-semibold text-[#639B48] uppercase tracking-wider group-hover:text-white transition-colors">
                     Institutional Grade
                   </span>
                 </div>
@@ -100,4 +103,3 @@ export const IndustriesSection: React.FC = () => {
     </section>
   );
 };
-
