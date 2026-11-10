@@ -1,11 +1,9 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
   X,
   ChevronRight,
-  Filter,
   ArrowRight,
   Sparkles,
   Layers,
@@ -67,25 +65,25 @@ export const ProductCataloguePage: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Breadcrumbs & Header Section */}
-      <section className="bg-sparklean-off-white/60 border-b border-sparklean-border-light py-8 sm:py-12">
+      <section className="bg-[#F7F8F6] border-b border-[#E6E9EC] py-10 sm:py-14">
         <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-sparklean-muted">
-            <Link to="/" className="hover:text-sparklean-primary transition-colors">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#66717C]">
+            <Link to="/" className="hover:text-[#A71930] transition-colors">
               Home
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-sparklean-muted/60" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#66717C]/60" />
             <Link
               to="/products"
               onClick={() => handleCategorySelect('all')}
-              className={activeCategoryName ? 'hover:text-sparklean-primary transition-colors' : 'text-sparklean-charcoal font-semibold'}
+              className={activeCategoryName ? 'hover:text-[#A71930] transition-colors' : 'text-[#172B40] font-semibold'}
             >
               Our Products
             </Link>
             {activeCategoryName && (
               <>
-                <ChevronRight className="w-3.5 h-3.5 text-sparklean-muted/60" />
-                <span className="text-sparklean-primary font-semibold">
+                <ChevronRight className="w-3.5 h-3.5 text-[#66717C]/60" />
+                <span className="text-[#A71930] font-semibold">
                   {activeCategoryName}
                 </span>
               </>
@@ -93,15 +91,15 @@ export const ProductCataloguePage: React.FC = () => {
           </nav>
 
           {/* Page Heading & Short Introduction */}
-          <div className="max-w-3xl space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-heading uppercase tracking-wider bg-sparklean-primary-light text-sparklean-primary font-medium">
-              <Sparkles className="w-3 h-3 text-sparklean-accent" />
+          <div className="max-w-3xl space-y-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans uppercase tracking-wider bg-[#FDF2F4] text-[#A71930] font-semibold">
+              <Sparkles className="w-3 h-3 text-[#D6A64F]" />
               <span>Commercial &amp; Institutional Portfolio</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold uppercase tracking-wide text-sparklean-charcoal">
-              {activeCategoryName ? activeCategoryName : 'Our Products'}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#172B40] leading-tight">
+              {activeCategoryName ? activeCategoryName : 'Our Commercial Products'}
             </h1>
-            <p className="text-sm sm:text-base text-sparklean-muted leading-relaxed">
+            <p className="text-sm sm:text-base text-[#66717C] leading-relaxed">
               Explore Sparklean&apos;s professional cleaning, hygiene, and maintenance formulations.
               Engineered specifically for hospitality facilities, commercial catering operations,
               industrial laundries, and healthcare institutions across the United Arab Emirates.
@@ -111,7 +109,7 @@ export const ProductCataloguePage: React.FC = () => {
       </section>
 
       {/* 2. Interactive Filtering & Search Bar */}
-      <section className="sticky top-20 z-20 bg-white/95 backdrop-blur-md border-b border-sparklean-border py-4 shadow-subtle">
+      <section className="sticky top-20 z-20 bg-white/98 backdrop-blur-md border-b border-[#E6E9EC] py-4 shadow-subtle">
         <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             {/* Category Filter Pills (Scrollable horizontally on mobile) */}
@@ -119,10 +117,10 @@ export const ProductCataloguePage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleCategorySelect('all')}
-                className={`px-4 py-2 rounded-subtle text-xs font-heading uppercase tracking-wider font-semibold whitespace-nowrap transition-colors flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-full text-xs font-sans font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 ${
                   selectedCategory === 'all'
-                    ? 'bg-sparklean-primary text-white shadow-subtle'
-                    : 'bg-sparklean-off-white text-sparklean-charcoal hover:bg-sparklean-primary-light hover:text-sparklean-primary border border-sparklean-border'
+                    ? 'bg-[#A71930] text-white shadow-sm'
+                    : 'bg-[#F7F8F6] text-[#172B40] hover:bg-[#FDF2F4] hover:text-[#A71930] border border-[#E6E9EC]'
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
@@ -134,10 +132,10 @@ export const ProductCataloguePage: React.FC = () => {
                   key={cat.id}
                   type="button"
                   onClick={() => handleCategorySelect(cat.id)}
-                  className={`px-4 py-2 rounded-subtle text-xs font-heading uppercase tracking-wider font-semibold whitespace-nowrap transition-colors ${
+                  className={`px-4 py-2 rounded-full text-xs font-sans font-semibold whitespace-nowrap transition-all ${
                     selectedCategory === cat.id
-                      ? 'bg-sparklean-primary text-white shadow-subtle'
-                      : 'bg-sparklean-off-white text-sparklean-charcoal hover:bg-sparklean-primary-light hover:text-sparklean-primary border border-sparklean-border'
+                      ? 'bg-[#A71930] text-white shadow-sm'
+                      : 'bg-[#F7F8F6] text-[#172B40] hover:bg-[#FDF2F4] hover:text-[#A71930] border border-[#E6E9EC]'
                   }`}
                 >
                   {cat.name}
@@ -145,22 +143,22 @@ export const ProductCataloguePage: React.FC = () => {
               ))}
             </div>
 
-            {/* Simple Search Input */}
+            {/* Search Input */}
             <div className="relative w-full lg:w-72 shrink-0">
-              <Search className="w-4 h-4 text-sparklean-muted absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-4 h-4 text-[#66717C] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products..."
-                className="w-full pl-9 pr-8 py-2 bg-sparklean-off-white text-sparklean-charcoal text-xs font-sans rounded-subtle border border-sparklean-border focus:outline-none focus:ring-1 focus:ring-sparklean-primary focus:border-sparklean-primary transition-all placeholder:text-sparklean-muted"
+                className="w-full pl-9 pr-8 py-2 bg-[#F7F8F6] text-[#172B40] text-xs font-sans rounded-full border border-[#E6E9EC] focus:outline-none focus:border-[#A71930] transition-all placeholder:text-[#66717C]"
                 aria-label="Search commercial products"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-sparklean-muted hover:text-sparklean-charcoal"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#66717C] hover:text-[#172B40]"
                   aria-label="Clear search"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -170,14 +168,14 @@ export const ProductCataloguePage: React.FC = () => {
           </div>
 
           {/* Results count & active search summary */}
-          <div className="flex items-center justify-between text-xs text-sparklean-muted pt-1">
-            <span className="font-mono">
+          <div className="flex items-center justify-between text-xs text-[#66717C] pt-1">
+            <span className="font-sans">
               Showing {filteredProducts.length}{' '}
               {filteredProducts.length === 1 ? 'commercial product' : 'commercial products'}
               {selectedCategory !== 'all' && (
                 <>
                   {' '}in{' '}
-                  <span className="text-sparklean-primary font-semibold">
+                  <span className="text-[#A71930] font-semibold">
                     {activeCategoryName}
                   </span>
                 </>
@@ -192,97 +190,85 @@ export const ProductCataloguePage: React.FC = () => {
                   setSearchQuery('');
                   navigate('/products');
                 }}
-                className="text-sparklean-primary hover:text-sparklean-primary-dark font-medium underline underline-offset-2 flex items-center gap-1"
+                className="text-xs text-[#A71930] hover:underline font-semibold"
               >
-                <span>Reset all filters</span>
+                Reset Filters
               </button>
             )}
           </div>
         </div>
       </section>
 
-      {/* 3. Product Grid Section */}
+      {/* 3. Product Grid */}
       <section className="py-12 sm:py-16">
         <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatePresence mode="wait">
-            {filteredProducts.length > 0 ? (
-              <motion.div
-                key={`${selectedCategory}-${searchQuery}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
-              >
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </motion.div>
-            ) : (
-              /* Empty State */
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center py-20 px-4 bg-sparklean-off-white/40 rounded-container border border-sparklean-border max-w-lg mx-auto space-y-4"
-              >
-                <div className="w-12 h-12 rounded-full bg-sparklean-off-white border border-sparklean-border flex items-center justify-center mx-auto text-sparklean-muted">
-                  <Filter className="w-5 h-5" />
-                </div>
-                <h3 className="text-xl font-heading font-bold uppercase tracking-wide text-sparklean-charcoal">
-                  No Formulations Found
-                </h3>
-                <p className="text-xs sm:text-sm text-sparklean-muted">
-                  We could not find any products matching your current category filter or search query.
-                </p>
-                <div className="pt-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSelectedCategory('all');
-                      setSearchQuery('');
-                      navigate('/products');
-                    }}
-                    className="px-6 py-2.5 bg-sparklean-primary text-white font-heading font-medium text-xs uppercase tracking-wider rounded-subtle hover:bg-sparklean-primary-dark transition-colors shadow-subtle"
-                  >
-                    View All Products
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            /* Empty State */
+            <div className="py-16 text-center max-w-md mx-auto space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-[#F7F8F6] border border-[#E6E9EC] flex items-center justify-center mx-auto text-[#66717C]">
+                <Search className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-heading font-bold text-[#172B40]">
+                No Formulations Found
+              </h3>
+              <p className="text-sm text-[#66717C] leading-relaxed">
+                We couldn&apos;t find any commercial products matching your criteria &quot;{searchQuery}&quot;. Try adjusting your search term or selecting a different category.
+              </p>
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCategory('all');
+                    setSearchQuery('');
+                    navigate('/products');
+                  }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#A71930] hover:bg-[#8B1226] text-white font-sans font-semibold text-xs rounded-md transition-colors shadow-sm"
+                >
+                  <span>View All Commercial Products</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
       {/* 4. Request a Quote CTA Banner */}
-      <section className="py-16 sm:py-20 bg-sparklean-off-white border-t border-sparklean-border">
+      <section className="py-16 bg-[#F7F8F6] border-t border-[#E6E9EC]">
         <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-container border border-sparklean-border p-8 sm:p-12 shadow-card flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="space-y-3 text-center lg:text-left max-w-2xl">
-              <span className="text-xs font-heading font-semibold uppercase tracking-widest text-sparklean-primary">
-                Bulk Orders &amp; Institutional Supply
+          <div className="bg-[#172B40] text-white rounded-2xl p-8 sm:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-card">
+            <div className="space-y-3 max-w-xl text-center lg:text-left">
+              <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#D6A64F]">
+                Institutional Procurement
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-bold uppercase tracking-wide text-sparklean-charcoal">
-                Need Customized Quantities or Technical Data Sheets?
+              <h2 className="text-2xl sm:text-3xl font-heading font-bold leading-tight">
+                Need Bulk Pricing or Custom Chemical Specifications?
               </h2>
-              <p className="text-sm text-sparklean-muted leading-relaxed">
-                Our technical sales team provides tailored commercial quotations, MSDS documentation,
-                dilution ratio guidelines, and scheduled delivery plans for hospitality and industrial facilities.
+              <p className="text-sm text-white/80 leading-relaxed">
+                Speak directly with our technical team for institutional quotations, custom drum sizes,
+                and scheduled site delivery anywhere in the UAE.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full lg:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
               <Link
                 to="/contact?type=quote"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-sparklean-primary text-white font-heading font-medium text-sm uppercase tracking-wider rounded-subtle hover:bg-sparklean-primary-dark transition-colors shadow-subtle"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#A71930] hover:bg-[#8B1226] text-white font-sans font-semibold text-sm rounded-md transition-colors shadow-subtle"
               >
                 <span>Request a Quote</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-sparklean-charcoal border border-sparklean-border font-heading font-medium text-sm uppercase tracking-wider rounded-subtle hover:bg-sparklean-off-white transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent hover:bg-white/10 text-white border border-white/30 font-sans font-semibold text-sm rounded-md transition-colors"
               >
-                <span>Contact Sales</span>
+                <span>Contact Technical Team</span>
               </Link>
             </div>
           </div>
@@ -293,4 +279,3 @@ export const ProductCataloguePage: React.FC = () => {
 };
 
 export default ProductCataloguePage;
-
