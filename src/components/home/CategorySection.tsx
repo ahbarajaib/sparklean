@@ -79,15 +79,15 @@ const CATEGORIES: CategoryItem[] = [
 
 export const CategorySection: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-24 bg-[#F7F8F6]">
+    <section className="py-8 sm:py-16 lg:py-24 bg-[#F7F8F6]">
       <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 lg:mb-16 gap-4 sm:gap-6">
-          <div className="max-w-2xl space-y-2 sm:space-y-3">
-            <span className="text-[11px] sm:text-[13px] font-heading font-extrabold uppercase tracking-[0.14em] text-[#A71930]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 lg:mb-16 gap-3 sm:gap-6">
+          <div className="max-w-2xl space-y-1.5 sm:space-y-3">
+            <span className="text-[10px] sm:text-[13px] font-heading font-extrabold uppercase tracking-[0.14em] text-[#A71930]">
               OUR PRODUCT CATEGORIES
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-heading font-extrabold text-[#172B40] leading-tight">
+            <h2 className="text-xl sm:text-4xl lg:text-[2.65rem] font-heading font-extrabold text-[#172B40] leading-tight">
               Complete Cleaning Solutions for Professional Environments.
             </h2>
             <p className="text-xs sm:text-base text-[#66717C] font-sans leading-relaxed">
@@ -97,7 +97,7 @@ export const CategorySection: React.FC = () => {
 
           <Link
             to="/products"
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-[#D0D5DD] bg-white text-xs sm:text-sm font-sans font-semibold text-[#172B40] hover:border-[#A71930] hover:text-[#A71930] transition-all shadow-sm self-start md:self-auto shrink-0"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full border border-[#D0D5DD] bg-white text-xs sm:text-sm font-sans font-semibold text-[#172B40] hover:border-[#A71930] hover:text-[#A71930] transition-all shadow-sm self-start md:self-auto shrink-0"
           >
             <span>View Catalogue</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -105,7 +105,7 @@ export const CategorySection: React.FC = () => {
         </div>
 
         {/* Categories Grid (2 Columns on mobile, 3 Columns on desktop) */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8">
           {CATEGORIES.map((category) => {
             const IconComponent = category.icon;
             return (
@@ -123,13 +123,13 @@ export const CategorySection: React.FC = () => {
                     loading="lazy"
                   />
                   {/* Floating Icon Badge */}
-                  <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-4 w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/95 backdrop-blur-sm border border-[#E6E9EC] shadow-sm flex items-center justify-center text-[#A71930] group-hover:bg-[#A71930] group-hover:text-white transition-colors">
-                    <IconComponent className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+                  <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-4 w-6 h-6 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/95 backdrop-blur-sm border border-[#E6E9EC] shadow-sm flex items-center justify-center text-[#A71930] group-hover:bg-[#A71930] group-hover:text-white transition-colors">
+                    <IconComponent className="w-3 h-3 sm:w-5 sm:h-5" />
                   </div>
                 </div>
 
                 {/* Card Content */}
-                <div className="p-3 sm:p-5 lg:p-6 flex-1 flex flex-col justify-between space-y-2 sm:space-y-4">
+                <div className="p-2.5 sm:p-5 lg:p-6 flex-1 flex flex-col justify-between space-y-2 sm:space-y-4">
                   <div className="space-y-1 sm:space-y-2">
                     <h3 className="text-xs sm:text-base lg:text-[1.18rem] font-heading font-bold text-[#172B40] group-hover:text-[#A71930] transition-colors leading-snug line-clamp-2">
                       {category.name}
@@ -139,7 +139,7 @@ export const CategorySection: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="pt-1 text-[11px] sm:text-xs lg:text-sm font-sans font-semibold text-[#A71930] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  <div className="pt-0.5 text-[10.5px] sm:text-xs lg:text-sm font-sans font-semibold text-[#A71930] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     <span>Explore</span>
                     <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </div>

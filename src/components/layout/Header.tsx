@@ -249,7 +249,7 @@ export const Header: React.FC = () => {
             </button>
             <Link
               to="/contact?type=quote"
-              className="inline-flex items-center justify-center px-3.5 py-2 bg-[#A71930] text-white font-sans font-semibold text-xs rounded-lg hover:bg-[#8B1226] transition-colors shadow-sm"
+              className="hidden sm:inline-flex items-center justify-center px-3.5 py-2 bg-[#A71930] text-white font-sans font-semibold text-xs rounded-lg hover:bg-[#8B1226] transition-colors shadow-sm"
             >
               Quote
             </Link>

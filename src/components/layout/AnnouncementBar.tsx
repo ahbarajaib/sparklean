@@ -3,7 +3,7 @@ import { Phone, Mail, Sparkles } from 'lucide-react';
 
 export const AnnouncementBar: React.FC = () => {
   return (
-    <div className="bg-[#A71930] text-white text-[12px] font-sans py-2 px-4 sm:px-6 lg:px-8 select-none transition-colors">
+    <div className="hidden sm:block bg-[#A71930] text-white text-[12px] font-sans py-2 px-4 sm:px-6 lg:px-8 select-none transition-colors">
       <div className="max-w-site mx-auto flex items-center justify-between">
         {/* Left: Contact Info */}
         <div className="flex items-center gap-5 text-white/95">
